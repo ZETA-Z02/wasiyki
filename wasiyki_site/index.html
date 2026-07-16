@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wasiyki - La plataforma definitiva para la gestión simplificada de alquileres, habitaciones, inquilinos y control de pagos.">
+    <title>Wasiyki - Sistema de Gestión de Alquileres e Inquilinos</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-mustard: #b67929;
+            --color-mustard-hover: #a36921;
+            --color-mustard-light: rgba(182, 121, 41, 0.1);
+            --color-gray-blue: #a3acb1;
+            --color-slate: #3c5b74;
+            --color-navy: #264b77;
+            --color-navy-hover: #1b385a;
+            --color-dark-navy: #00243f;
+            --color-bg: #f0f4f8;
+            --color-card-bg: #ffffff;
+            --color-text-main: #1f2937;
+            --color-text-muted: #4b5563;
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navbar Sticky Glassmorphism */
+        .navbar {
+            background-color: rgba(0, 36, 63, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 36, 63, 0.1);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .navbar-brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-brand span {
+            color: var(--color-mustard);
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .navbar-links a {
+            color: var(--color-gray-blue);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .navbar-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-btn {
+            background-color: var(--color-mustard);
+            color: #ffffff !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(182, 121, 41, 0.2);
+            transition: all var(--transition-speed) ease !important;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--color-mustard-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(182, 121, 41, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-dark-navy) 0%, var(--color-navy) 100%);
+            color: #ffffff;
+            padding: 120px 40px 100px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background shapes */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(182, 121, 41, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(38, 75, 119, 0.3) 0%, transparent 70%);
+            bottom: -150px;
+            left: -100px;
+            z-index: 1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .hero-tag {
+            background-color: rgba(182, 121, 41, 0.15);
+            border: 1px solid rgba(182, 121, 41, 0.3);
+            color: #ffb85c;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            background: linear-gradient(90deg, #ffc06e 0%, var(--color-mustard) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--color-gray-blue);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-primary {
+            background-color: var(--color-mustard);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(182, 121, 41, 0.3);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-mustard-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(182, 121, 41, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Mockup dashboard container */
+        .hero-mockup {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 12px;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ef4444;
+        }
+
+        .mockup-dot:nth-child(2) { background-color: #eab308; }
+        .mockup-dot:nth-child(3) { background-color: #22c55e; }
+
+        .mockup-title {
+            font-size: 13px;
+            color: var(--color-gray-blue);
+            font-weight: 500;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .mockup-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .mockup-card-label {
+            font-size: 12px;
+            color: var(--color-gray-blue);
+            margin-bottom: 6px;
+        }
+
+        .mockup-card-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .mockup-card-value span {
+            color: #22c55e;
+            font-size: 12px;
+            margin-left: 6px;
+            font-weight: 500;
+        }
+
+        .mockup-list {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mockup-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 8px;
+        }
+
+        .mockup-list-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .mockup-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mockup-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--color-mustard);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .mockup-status {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .status-pagado {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        .status-pendiente {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+        }
+
+        /* Features Section */
+        .section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--color-dark-navy);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--color-text-muted);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--color-card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 10px 30px rgba(0, 36, 63, 0.03);
+            border: 1px solid rgba(163, 172, 177, 0.15);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 36, 63, 0.08);
+            border-color: rgba(182, 121, 41, 0.3);
+        }
+
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+            background-color: var(--color-mustard-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-mustard);
+            margin-bottom: 24px;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+
+        .feature-card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+        }
+
+        .feature-card-desc {
+            font-size: 15px;
+            color: var(--color-text-muted);
+        }
+
+        /* OAuth Security Information Section */
+        .oauth-section {
+            background-color: var(--color-card-bg);
+            border-radius: 20px;
+            padding: 60px 48px;
+            box-shadow: 0 10px 30px rgba(0, 36, 63, 0.03);
+            border: 1px solid rgba(163, 172, 177, 0.15);
+            margin: 60px auto;
+            max-width: 1120px;
+        }
+
+        .oauth-container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .oauth-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .oauth-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .oauth-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--color-dark-navy);
+            margin-bottom: 16px;
+        }
+
+        .oauth-desc {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            margin-bottom: 24px;
+        }
+
+        .scopes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .scope-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .scope-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--color-navy);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .scope-details h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 4px;
+        }
+
+        .scope-details p {
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        /* callout limited use */
+        .limited-use-callout {
+            background-color: rgba(38, 75, 119, 0.05);
+            border-left: 4px solid var(--color-navy);
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 30px;
+        }
+
+        .limited-use-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--color-navy);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .limited-use-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .limited-use-desc a {
+            color: var(--color-mustard);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .limited-use-desc a:hover {
+            text-decoration: underline;
+        }
+
+        .google-privacy-card {
+            background: linear-gradient(135deg, #f8fafd 0%, #edf3fc 100%);
+            border: 1px solid rgba(26, 115, 232, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .g-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a73e8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .g-card-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .g-card-item svg {
+            color: #34a853;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .g-card-item-text {
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        .g-card-item-text strong {
+            color: var(--color-dark-navy);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(163, 172, 177, 0.2);
+            padding: 80px 40px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background-color: var(--color-card-bg);
+            border: 1px solid rgba(163, 172, 177, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color var(--transition-speed) ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(182, 121, 41, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 24px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            transition: transform var(--transition-speed) ease;
+            color: var(--color-mustard);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+            padding: 0 24px;
+            font-size: 14px;
+            color: var(--color-text-muted);
+            border-top: 0 solid rgba(163, 172, 177, 0.1);
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding-bottom: 20px;
+            border-top-width: 1px;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        /* CTA Bottom Section */
+        .cta-bottom {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-dark-navy) 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .cta-subtitle {
+            font-size: 16px;
+            color: var(--color-gray-blue);
+            margin-bottom: 10px;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: var(--color-dark-navy);
+            color: var(--color-gray-blue);
+            padding: 60px 40px 30px 40px;
+            border-top: 4px solid var(--color-mustard);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(2, 1fr);
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-brand {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-brand span {
+            color: var(--color-mustard);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-links-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links-list a {
+            color: var(--color-gray-blue);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-links-list a:hover {
+            color: var(--color-mustard);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 30px;
+            font-size: 13px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 16px 24px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .hero-tag {
+                margin: 0 auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-mockup {
+                max-width: 600px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .oauth-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none; /* In production a fully integrated mobile drawer could be implemented */
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .oauth-section {
+                padding: 40px 24px;
+                margin: 30px 10px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar" id="home">
+        <a href="#" class="navbar-brand">
+            Wasiyki<span>.</span>
+        </a>
+        <div class="navbar-links">
+            <a href="#features">Características</a>
+            <a href="#seguridad">Seguridad y OAuth</a>
+            <a href="#faq">Preguntas Frecuentes</a>
+            <a href="/politica/">Política de Privacidad</a>
+            <a href="/terminos/">Términos de Servicio</a>
+            <a href="/login" class="nav-btn">Iniciar Sesión</a>
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">Gestión Inmobiliaria Inteligente</div>
+                <h1 class="hero-title">El control total de tus alquileres <span>en un solo lugar</span>.</h1>
+                <p class="hero-description">
+                    Wasiyki te ayuda a centralizar la información de tus inquilinos, organizar tus habitaciones, registrar pagos mensuales de renta y llevar una trazabilidad digital de tus contratos de forma simple y segura.
+                </p>
+                <div class="hero-buttons">
+                    <a href="/login" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                        Ingresar con Google
+                    </a>
+                    <a href="#features" class="btn btn-secondary">Ver características</a>
+                </div>
+            </div>
+            
+            <!-- Dashboard CSS Mockup -->
+            <div class="hero-mockup">
+                <div class="mockup-header">
+                    <div class="mockup-dots">
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                    </div>
+                    <div class="mockup-title">Wasiyki Dashboard - Vista General</div>
+                </div>
+                
+                <div class="mockup-grid">
+                    <div class="mockup-card">
+                        <div class="mockup-card-label">Habitaciones Ocupadas</div>
+                        <div class="mockup-card-value">12/15 <span>80%</span></div>
+                    </div>
+                    <div class="mockup-card">
+                        <div class="mockup-card-label">Ingresos Mensuales</div>
+                        <div class="mockup-card-value">S/. 4,850</div>
+                    </div>
+                </div>
+                
+                <div class="mockup-list">
+                    <div style="font-size: 11px; font-weight: 700; color: var(--color-gray-blue); text-transform: uppercase;">Últimos Pagos Registrados</div>
+                    
+                    <div class="mockup-list-item">
+                        <div class="mockup-user">
+                            <div class="mockup-avatar">JA</div>
+                            <div>
+                                <div style="font-weight: 600; color:#fff;">Juan Alva</div>
+                                <div style="font-size: 10px; color: var(--color-gray-blue);">Habitación 102</div>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-weight: 600; color:#fff;">S/. 450</div>
+                            <span class="mockup-status status-pagado">Pagado</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mockup-list-item">
+                        <div class="mockup-user">
+                            <div class="mockup-avatar" style="background-color:#264b77">MC</div>
+                            <div>
+                                <div style="font-weight: 600; color:#fff;">María Castro</div>
+                                <div style="font-size: 10px; color: var(--color-gray-blue);">Habitación 204</div>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-weight: 600; color:#fff;">S/. 500</div>
+                            <span class="mockup-status status-pendiente">Pendiente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Features Section -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <div style="color: var(--color-mustard); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Funcionalidades</div>
+            <h2 class="section-title">Diseñado para simplificar tu administración</h2>
+            <p class="section-subtitle">
+                Centraliza las tareas más operativas de tus bienes raíces y mantén un control claro del estado financiero de tus alquileres.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                </div>
+                <h3 class="feature-card-title">Control de Habitaciones</h3>
+                <p class="feature-card-desc">
+                    Clasifica y administra tus unidades por pisos, define tarifas y monitorea la disponibilidad (Libre, Ocupado, Mantenimiento) en tiempo real.
+                </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <h3 class="feature-card-title">Gestión de Inquilinos</h3>
+                <p class="feature-card-desc">
+                    Mantén fichas detalladas de tus inquilinos con su información de contacto personal, documentos adjuntos, historial y estado actual de cuenta.
+                </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <h3 class="feature-card-title">Contratos de Arrendamiento</h3>
+                <p class="feature-card-desc">
+                    Visualiza y gestiona las cláusulas contractuales, fechas de inicio y vencimiento, montos del depósito de garantía y fechas de cobro asociadas.
+                </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="feature-card-title">Control de Pagos</h3>
+                <p class="feature-card-desc">
+                    Registra y consulta el flujo de pagos mensuales. Emite constancias visuales rápidas para saber al instante quién está al día y quién tiene pagos atrasados.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google OAuth Security & Integration Section -->
+    <section class="section" id="seguridad" style="border-top: 1px solid rgba(163, 172, 177, 0.2);">
+        <div class="section-header">
+            <div style="color: var(--color-navy); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Transparencia y Seguridad</div>
+            <h2 class="section-title">¿Cómo usamos Google OAuth?</h2>
+            <p class="section-subtitle">
+                Nos tomamos muy en serio la seguridad e integridad de tus datos. Usamos Google Sign-In exclusivamente con fines de identificación segura.
+            </p>
+        </div>
+
+        <div class="oauth-section">
+            <div class="oauth-container">
+                <div>
+                    <div class="oauth-badge">
+                        <!-- Google Color Logo Icon -->
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.22-.67-.35-1.37-.35-2.09z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        Autenticación Segura Integrada
+                    </div>
+                    
+                    <h3 class="oauth-title">Acceso rápido y sin contraseñas adicionales</h3>
+                    <p class="oauth-desc">
+                        Para ingresar a Wasiyki, puedes utilizar el botón <strong>"Continuar con Google"</strong>. Esto establece un puente de comunicación de alta seguridad provisto por Google. Nosotros <strong>nunca vemos ni almacenamos tu contraseña de Google</strong>. 
+                    </p>
+
+                    <div class="scopes-list">
+                        <!-- Scope 1 -->
+                        <div class="scope-item">
+                            <div class="scope-number">1</div>
+                            <div class="scope-details">
+                                <h4>Identidad Básica (openid)</h4>
+                                <p>Genera un identificador único seguro dentro de nuestro sistema para validar el inicio de sesión del usuario legítimo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Scope 2 -->
+                        <div class="scope-item">
+                            <div class="scope-number">2</div>
+                            <div class="scope-details">
+                                <h4>Correo Electrónico (/auth/userinfo.email)</h4>
+                                <p>Asocia tu cuenta y nos permite enviarte alertas y notificaciones sobre el estado de pago de tus inquilinos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Scope 3 -->
+                        <div class="scope-item">
+                            <div class="scope-number">3</div>
+                            <div class="scope-details">
+                                <h4>Datos de Perfil (/auth/userinfo.profile)</h4>
+                                <p>Obtiene tu nombre y foto de perfil exclusivamente para personalizar el panel de administración interno.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Privacy Guarantees Card -->
+                <div>
+                    <div class="google-privacy-card">
+                        <div class="g-card-title">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.154l7.834 3.746A2 2 0 0 1 19 6.753v5.496a8.003 8.003 0 0 1-5.197 7.48L10 20l-3.803-1.27A8.003 8.003 0 0 1 1 12.249V6.753a2 2 0 0 1 1.166-1.853zM10 3.32L4 6.19v5.18c0 3.255 1.966 6.16 4.88 7.195l1.12.373 1.12-.373C14.034 17.53 16 14.625 16 11.37V6.19l-6-2.87zM10 6a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" clip-rule="evenodd"/></svg>
+                            Garantía de Cero Permisos Invasivos
+                        </div>
+                        
+                        <div class="g-card-item">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="g-card-item-text">
+                                <strong>Sin Acceso a Gmail:</strong> Wasiyki no puede leer, escribir, ni enviar correos desde tu cuenta personal de Gmail.
+                            </div>
+                        </div>
+
+                        <div class="g-card-item">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="g-card-item-text">
+                                <strong>Sin Acceso a Google Drive:</strong> No solicitamos permisos de lectura o edición de tus archivos en la nube.
+                            </div>
+                        </div>
+
+                        <div class="g-card-item">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="g-card-item-text">
+                                <strong>Control Absoluto:</strong> Puedes revocar el acceso a tus datos básicos de Google en cualquier momento desde la configuración de tu cuenta de Google.
+                            </div>
+                        </div>
+
+                        <!-- Declaración de Uso Limitado -->
+                        <div class="limited-use-callout">
+                            <div class="limited-use-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                Uso Limitado de la API
+                            </div>
+                            <div class="limited-use-desc">
+                                El uso y transferencia por parte de Wasiyki de la información recibida de las API de Google a cualquier otra aplicación se adherirán a la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Política de Datos de Usuario de los Servicios de API de Google</a>, incluidos los requisitos de Uso Limitado establecidos en ella.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <div class="section-header">
+                <div style="color: var(--color-mustard); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Dudas y Soporte</div>
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Respuestas rápidas a las consultas comunes sobre la seguridad de Wasiyki.</p>
+            </div>
+
+            <div class="faq-list">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Qué es Wasiyki y para qué sirve?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Wasiyki es una aplicación web de gestión inmobiliaria enfocada en el control de alquileres. Permite a los propietarios llevar un registro de sus habitaciones disponibles u ocupadas, registrar fichas técnicas y de contacto de sus inquilinos, establecer fechas de contratos de arrendamiento y registrar manualmente los pagos mensuales de renta.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Por qué Wasiyki usa Google OAuth para iniciar sesión?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Utilizamos Google OAuth 2.0 para garantizar que el registro e inicio de sesión en nuestra plataforma sean lo más seguros posibles. De esta manera, delegamos la autenticación a la infraestructura global de Google, evitando almacenar contraseñas directas y permitiendo a nuestros usuarios un acceso rápido y seguro en un solo clic.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Tienen acceso a mis archivos de Google Drive o correos personales?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Wasiyki solicita únicamente alcances (scopes) no sensibles: <code>openid</code>, <code>profile</code> (nombre y foto) y <code>email</code>. Bajo ninguna circunstancia solicitamos o tenemos acceso a tus archivos, correos de Gmail, contactos o calendario.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Cómo puedo revocar el acceso de Wasiyki a mi cuenta de Google?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Puedes revocar el acceso instantáneamente desde tu cuenta de Google. Dirígete a la sección de configuración de seguridad de Google, ingresa a la pestaña "Aplicaciones con acceso a tu cuenta", selecciona "Wasiyki" y haz clic en "Quitar el acceso". Esto inhabilitará por completo el inicio de sesión directo.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Cómo elimino mi cuenta y datos de Wasiyki por completo?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>De acuerdo con nuestra política de privacidad, puedes solicitar la baja definitiva de tu cuenta y la eliminación completa de toda tu información personal y registros inmobiliarios escribiendo a nuestro correo de soporte técnico: <strong style="color:var(--color-mustard)">soporte@wasiyki.com</strong>. Procesaremos tu solicitud y eliminaremos de forma definitiva tus datos en un periodo menor a 30 días.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="cta-bottom">
+        <div class="cta-content">
+            <h2 class="cta-title">Empieza a controlar tus alquileres hoy mismo</h2>
+            <p class="cta-subtitle">Únete a la plataforma que simplifica la vida de los propietarios.</p>
+            <a href="/login" class="btn btn-primary" style="margin-top: 10px;">
+                Comenzar Gratis con Google
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <a href="#" class="footer-brand">
+                    Wasiyki<span>.</span>
+                </a>
+                <p class="footer-text">
+                    La plataforma ágil para administrar inquilinos, contratos, alquileres e ingresos. Optimiza tu administración inmobiliaria de forma automatizada y segura.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-links-title">Enlaces Rápidos</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#features">Características</a></li>
+                    <li><a href="#seguridad">Seguridad y OAuth</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-links-title">Legal y Soporte</h4>
+                <ul class="footer-links-list">
+                    <li><a href="/politica/">Política de Privacidad</a></li>
+                    <li><a href="/terminos/">Términos de Servicio</a></li>
+                    <li><a href="mailto:soporte@wasiyki.com" style="font-weight: 600; color: #ffffff;">soporte@wasiyki.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 Wasiyki. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Simple Interactivity Scripts -->
+    <script>
+        // Toggle FAQ Accordions
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                
+                // Toggle active class on clicked item
+                faqItem.classList.toggle('active');
+                
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Mobile Menu Toggle logic
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.navbar-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (navLinks.classList.contains('mobile-active')) {
+                navLinks.classList.remove('mobile-active');
+                navLinks.style.display = 'none';
+                menuToggle.classList.remove('active');
+            } else {
+                navLinks.classList.add('mobile-active');
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'var(--color-dark-navy)';
+                navLinks.style.padding = '20px';
+                navLinks.style.gap = '16px';
+                navLinks.style.boxShadow = '0 10px 15px rgba(0,0,0,0.2)';
+                menuToggle.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
