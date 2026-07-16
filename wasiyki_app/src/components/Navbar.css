@@ -1,0 +1,101 @@
+/* =========================================
+   Estilos Móviles (Por defecto - Abajo)
+   ========================================= */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background-color: #1a365d; /* Azul oscuro estilo Wasiyki */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+/* Ocultar el logo y las notificaciones en el móvil para dar espacio al menú */
+.navbar-brand, 
+.navbar-actions {
+    display: none;
+}
+
+.navbar-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #a0aec0; /* Texto inactivo (Gris claro) */
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px; /* Borde redondeado tipo píldora */
+    transition: all 0.3s ease;
+}
+
+.nav-link.active {
+    background-color: #d69e2e; /* Color mostaza/dorado */
+    color: #ffffff;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   Estilos Escritorio (Pantallas Grandes - Arriba)
+   ========================================= */
+@media (min-width: 768px) {
+    .navbar {
+        top: 0;
+        bottom: auto; /* Desanclamos de abajo */
+        height: 70px;
+        justify-content: space-between;
+        padding: 0 40px;
+        /* Al no tener border-radius ni márgenes, ocupa el 100% de la franja superior */
+    }
+
+    .navbar-brand {
+        display: block;
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .navbar-links {
+        width: auto;
+        gap: 10px;
+        /* Opcional: Fondo sutil detrás de los botones centrales como en la imagen */
+        background-color: rgba(255, 255, 255, 0.1); 
+        padding: 6px;
+        border-radius: 30px;
+    }
+
+    .nav-link {
+        font-size: 15px;
+        padding: 8px 24px;
+    }
+
+    .navbar-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .action-btn {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .action-btn:hover {
+        transform: scale(1.1);
+    }
+}

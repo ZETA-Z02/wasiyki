@@ -1,0 +1,168 @@
+.inquilinos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    color: var(--color-dark-navy);
+}
+
+/* --- Cabecera y Buscador --- */
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+.page-subtitle {
+    color: var(--color-slate);
+    font-size: 15px;
+    margin: 0 0 20px 0;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    max-width: 500px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 15px 12px 35px;
+    border: 1px solid var(--color-gray-blue);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.search-box input:focus {
+    border-color: var(--color-navy);
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+}
+
+/* --- Tabla de Inquilinos --- */
+.table-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 36, 63, 0.05);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px;
+}
+
+.custom-table th {
+    background-color: #f8fafc;
+    color: var(--color-slate);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 15px;
+    border-bottom: 1px solid var(--color-gray-blue);
+}
+
+.custom-table td {
+    padding: 15px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(163, 172, 177, 0.3);
+    vertical-align: middle;
+}
+
+.custom-table tr:last-child td {
+    border-bottom: none;
+}
+
+.custom-table tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Avatar del inquilino */
+.tenant-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-slate);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Botones de acción de la tabla */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-table-action {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    border: 1px solid var(--color-slate);
+    background-color: transparent;
+    color: var(--color-slate);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-table-action:hover {
+    background-color: var(--color-slate);
+    color: #ffffff;
+}
+
+/* --- Modal Formulario Doble --- */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.modal-section-title {
+    font-size: 16px;
+    color: var(--color-mustard);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-gray-blue);
+    padding-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+}

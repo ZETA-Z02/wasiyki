@@ -1,0 +1,6 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* El color de fondo gris azulado claro de la imagen */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}

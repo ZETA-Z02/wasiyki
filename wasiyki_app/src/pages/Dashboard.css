@@ -1,0 +1,201 @@
+:root {
+    --color-mustard: #b67929;
+    --color-gray-blue: #a3acb1;
+    --color-slate: #3c5b74;
+    --color-navy: #264b77;
+    --color-dark-navy: #00243f;
+    --bg-light: #f0f4f8;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    color: var(--color-dark-navy);
+}
+
+/* --- Cabecera de Bienvenida --- */
+.welcome-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    gap: 5px;
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.welcome-subtitle {
+    color: var(--color-slate);
+    font-size: 15px;
+    margin: 0;
+}
+
+/* --- Grid Principal --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Móvil: 1 columna */
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Tablet y Desktop */
+@media (min-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .welcome-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+
+/* --- Tarjetas (Cards) --- */
+.dash-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 36, 63, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin: 0 0 15px 0;
+}
+
+/* --- Elementos específicos dentro de los Cards --- */
+.income-amount {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--color-mustard);
+    margin: 10px 0;
+}
+
+/* Barra de progreso (Resumen Propiedad) */
+.progress-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: var(--color-slate);
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: var(--color-gray-blue);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--color-mustard);
+    border-radius: 10px;
+}
+
+/* Lista de Alertas */
+.alert-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.alert-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(163, 172, 177, 0.3); /* Gray blue transparente */
+}
+.alert-item:last-child { border-bottom: none; }
+.alert-danger { color: #d9534f; font-weight: 600; }
+.alert-warning { color: var(--color-mustard); font-weight: 600; }
+
+/* Habitaciones Disponibles */
+.room-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.room-chip {
+    background-color: var(--color-navy);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Botones de Acciones Rápidas */
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn-action {
+    background-color: var(--color-mustard);
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-action:hover {
+    background-color: #9c6520;
+}
+
+/* --- Tabla de Últimos Pagos --- */
+.table-container {
+    overflow-x: auto; /* Permite scroll horizontal en móviles si la tabla es muy ancha */
+}
+
+.payments-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.payments-table th {
+    color: var(--color-slate);
+    font-weight: 600;
+    padding: 12px 10px;
+    border-bottom: 2px solid var(--color-gray-blue);
+}
+
+.payments-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(163, 172, 177, 0.3);
+    color: var(--color-dark-navy);
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.badge-success {
+    background-color: rgba(182, 121, 41, 0.1);
+    color: var(--color-mustard);
+}

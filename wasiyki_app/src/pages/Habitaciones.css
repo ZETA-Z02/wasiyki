@@ -1,0 +1,237 @@
+.habitaciones-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    color: var(--color-dark-navy);
+}
+
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* --- Summary Cards --- */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 36, 63, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-card h3 {
+    font-size: 13px;
+    color: var(--color-slate);
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.summary-card .big-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-dark-navy);
+    margin: 0;
+}
+
+/* --- Filters --- */
+.filters-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid var(--color-gray-blue);
+    border-radius: 8px;
+    width: 250px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--color-navy);
+}
+
+.status-filters {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-gray-blue);
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-slate);
+    border-right: 1px solid var(--color-gray-blue);
+}
+
+.filter-btn:last-child {
+    border-right: none;
+}
+
+.filter-btn.active {
+    background-color: var(--color-navy);
+    color: #ffffff;
+}
+
+/* --- Room Grid & Cards --- */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.room-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 36, 63, 0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.room-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.status-disponible { background-color: #48bb78; } /* Verde */
+.status-ocupada { background-color: var(--color-mustard); } /* Mostaza */
+.status-mantenimiento { background-color: #4299e1; } /* Azul claro */
+
+.room-info {
+    padding: 15px;
+}
+
+.room-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: var(--color-dark-navy);
+}
+
+.room-price {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.room-desc {
+    font-size: 13px;
+    color: var(--color-slate);
+    margin-bottom: 15px;
+    min-height: 38px; /* Para alinear botones si la desc es corta */
+}
+
+.room-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn-small {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-edit { background-color: #edf2f7; color: var(--color-slate); }
+.btn-edit:hover { background-color: #e2e8f0; }
+
+.btn-delete { background-color: #fed7d7; color: #c53030; }
+.btn-delete:hover { background-color: #feb2b2; }
+
+/* --- Modal --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 36, 63, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 450px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 { margin: 0; font-size: 20px; color: var(--color-dark-navy); }
+.close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--color-slate); }
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--color-navy);
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-gray-blue);
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}

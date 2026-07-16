@@ -1,0 +1,166 @@
+:root {
+    /* Tu paleta de colores exacta */
+    --color-mustard: #b67929;
+    --color-gray-blue: #a3acb1;
+    --color-slate: #3c5b74;
+    --color-navy: #264b77;
+    --color-dark-navy: #00243f;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8; /* Un fondo muy neutro para que resalte la tarjeta */
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.login-card {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 36, 63, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-title {
+    color: var(--color-dark-navy);
+    font-size: 28px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.login-subtitle {
+    color: var(--color-slate);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--color-navy);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-gray-blue);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--color-dark-navy);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--color-navy);
+    box-shadow: 0 0 0 3px rgba(38, 75, 119, 0.1);
+}
+
+.btn-primary {
+    background-color: var(--color-mustard);
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+    background-color: #a36921; /* Un tono ligeramente más oscuro para el hover */
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--color-gray-blue);
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--color-gray-blue);
+    opacity: 0.5;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .25em;
+}
+
+.btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #ffffff;
+    color: var(--color-dark-navy);
+    border: 1px solid var(--color-slate);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.btn-google:hover {
+    background-color: #f8fafc;
+}
+
+.error-message {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #fca5a5;
+}
+
+.login-card-footer {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--color-slate);
+}
+
+.login-card-footer a {
+    color: var(--color-navy);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-card-footer a:hover {
+    color: var(--color-mustard);
+    text-decoration: underline;
+}

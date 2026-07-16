@@ -1,0 +1,106 @@
+.pagos-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px;
+    color: var(--color-dark-navy);
+}
+
+.pagos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.pagos-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+.pagos-subtitle {
+    color: var(--color-slate);
+    font-size: 14px;
+    margin: 0;
+}
+
+/* --- Tarjeta de Resumen (Top Card) --- */
+.summary-info-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 15px rgba(0, 36, 63, 0.05);
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border-left: 5px solid var(--color-navy);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.info-label {
+    font-weight: 700;
+    color: var(--color-dark-navy);
+}
+
+/* Etiquetas de Estado */
+.badge-status {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.badge-aldia {
+    background-color: #e6fffa;
+    color: #2c7a7b; /* Verde oscuro que combina con los tonos fríos */
+    border: 1px solid #b2f5ea;
+}
+
+.badge-atrasado {
+    background-color: rgba(182, 121, 41, 0.15);
+    color: var(--color-mustard);
+    border: 1px solid var(--color-mustard);
+}
+
+/* --- Tabla de Pagos --- */
+.pagos-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 36, 63, 0.05);
+    overflow-x: auto;
+}
+
+.btn-comprobante {
+    background-color: rgba(182, 121, 41, 0.15);
+    color: var(--color-mustard);
+    border: 1px solid var(--color-mustard);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-comprobante:hover {
+    background-color: var(--color-mustard);
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .summary-info-card {
+        grid-template-columns: 1fr;
+    }
+}
