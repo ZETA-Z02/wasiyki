@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-//   baseURL: "http://localhost:8000/api",
-  baseURL: "https://wasiyki-api.zettasky.com/api",
+    baseURL: "http://localhost:8000/api",
+  // baseURL: "https://wasiyki-api.zettasky.com/api",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",

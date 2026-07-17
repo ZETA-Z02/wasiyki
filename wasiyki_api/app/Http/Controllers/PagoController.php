@@ -74,7 +74,7 @@ class PagoController extends Controller
         $pdf = Pdf::loadView('pdf.comprobante', [
             'pago' => $pago,
             'arrendador' => $arrendador
-        ]);
+        ])->setPaper([0,0,226.77,600],'portrait');
 
         // Retornamos el PDF para que el frontend (React) lo pueda descargar o visualizar
         return $pdf->download('comprobante_' . $pago->numero_comprobante . '.pdf');
